@@ -32,6 +32,6 @@ jobs:
 
       - name: Build and Push Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/App1:latest .  # Build the Docker image
-          docker push ghcr.io/${{ github.repository }}/App1:latest  # Push the built image to the GitHub Container Registry
+          docker build -t ghcr.io/faheem-systems/using-github/app1:latest .  # Build the Docker image
+          docker push ghcr.io/faheem-systems/using-github/app1:latest  # Push the built image to the GitHub Container Registry
         # This step builds the Docker image and pushes it to GitHub Container Registry.
