@@ -1,0 +1,37 @@
+name: Maven Build & Dockerize
+
+on:
+  push:
+    branches: [ main ]  # This workflow will be triggered on a push to the 'main' branch
+  workflow_dispatch:  # This allows manual triggering of the workflow
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # The workflow will run on the latest version of Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # This step checks out the code from the repository
+        # This step fetches the latest code from the repository to run the subsequent steps.
+
+      - name: Set up Java
+        uses: actions/setup-java@v3  # Setting up Java for the project
+        with:
+          java-version: '17'  # Use JDK version 17
+          distribution: 'temurin'  # Use the OpenJDK Temurin distribution
+
+      - name: Build with Maven
+        run: mvn clean package -DskipTests  # This command builds the project using Maven, skipping tests
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v2  # Logs in to the Docker registry (GitHub Container Registry)
+        with:
+          registry: ghcr.io  # URL for GitHub Container Registry
+          username: ${{ github.actor }}  # Use the GitHub actor username (the current GitHub user)
+          password: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
+
+      - name: Build and Push Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/App1:latest .  # Build the Docker image
+          docker push ghcr.io/${{ github.repository }}/App1:latest  # Push the built image to the GitHub Container Registry
+        # This step builds the Docker image and pushes it to GitHub Container Registry.
