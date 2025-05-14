@@ -31,7 +31,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
 
       - name: Build and Push Docker image
-        run: |
-          docker build -t ghcr.io/faheem-systems/using-github/app1:latest .  # Build the Docker image
-          docker push ghcr.io/faheem-systems/using-github/app1:latest  # Push the built image to the GitHub Container Registry
-        # This step builds the Docker image and pushes it to GitHub Container Registry.
+         run: |
+           IMAGE_NAME="ghcr.io/${{ github.repository_owner }}/app1:latest"
+           docker build -t $IMAGE_NAME .
+           docker push $IMAGE_NAME
+
