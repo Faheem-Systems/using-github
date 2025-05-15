@@ -1,13 +1,15 @@
 # Use official Java 17 base image with Maven included
 FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy all source files
+# Copy all files
 COPY . .
 
-# Build the application (this creates the JAR in /app/target)
+# Give execute permission to the Maven wrapper script
+RUN chmod +x mvnw
+
+# Build the Spring Boot app
 RUN ./mvnw clean package -DskipTests
 
 # Step 2: Create final image with just the JAR file
@@ -19,8 +21,6 @@ WORKDIR /app
 # Copy only the built JAR file from the previous stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Expose port
 EXPOSE 8080
 
-# Run the application
 CMD ["java", "-jar", "app.jar"]
