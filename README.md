@@ -86,15 +86,58 @@ This project demonstrates a complete DevOps pipeline using:
 
 ```
 
-#  3. GitHub Actions Workflow: `docker.yml`
+#  3. GitHub Actions Workflow: `docker-app1.yml`
 A CI workflow was created to:
 
-1.Checkout code
+1. Checkout code
 
-2.Set up Java and Docker
+2. Set up Java and Docker
 
-3.Build Spring Boot project with Maven
+3. Build Spring Boot project with Maven
 
-4.Build Docker image
+4. Build Docker image
 
-5.Push Docker image to GHCR
+5. Push Docker image to GHCR (GitHub Container Registry)
+
+###`docker-app1.yml`
+```docker-app1.yml
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches: [main]  # Trigger the workflow when pushing to the 'main' branch
+
+permissions:
+  contents: write    # Allow the action to write to the repository
+  packages: write    # Allow the action to push Docker images to GitHub Container Registry
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu for the build environment
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Checkout the code from the repository
+     # I already set up java 17 in Docker, but here for learning 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3  # Set up Java 17 using the Temurin distribution
+        with:
+          distribution: 'temurin'  # Specify the JDK distribution (Temurin)
+          java-version: '17'  # Set Java version to 17
+       # I already build the project using maven in Docker, but for practice
+      - name: Build project
+        run: mvn clean install  # Build the project using Maven, install the dependencies
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3  # Log in to GitHub Container Registry using Docker login action
+        with:
+          registry: ghcr.io  # Specify the GitHub Container Registry URL
+          username: ${{ github.actor }}  # Use GitHub actor (username) for login
+          password: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
+
+      - name: Build and push Docker image
+        run: |
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')  # Convert repository name to lowercase
+          docker build -t ghcr.io/$REPO_LOWER:latest .  # Build the Docker image with the repository name in the tag
+          docker push ghcr.io/$REPO_LOWER:latest  # Push the Docker image to GitHub Container Registry
+```
