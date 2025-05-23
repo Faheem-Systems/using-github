@@ -99,7 +99,8 @@ A CI workflow was created to:
 
 5. Push Docker image to GHCR (GitHub Container Registry)
 
-###`docker-app1.yml`
+### `docker-app1.yml`
+
 ```docker-app1.yml
 name: Build and Push Docker Image
 
