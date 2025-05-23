@@ -58,7 +58,7 @@ This project demonstrates a complete DevOps pipeline using:
 
  # Give execute permission to the Maven wrapper script
   
-  RUN chmod +x mvnw**
+  RUN chmod +x mvnw
 
  # Build the Spring Boot app
    
