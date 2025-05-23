@@ -77,6 +77,7 @@ This project demonstrates a complete DevOps pipeline using:
   EXPOSE 8080
 
   CMD ["java", "-jar", "app.jar"]
+...
 
 
 
