@@ -44,7 +44,7 @@ This project demonstrates a complete DevOps pipeline using:
 
 #  2. Dockerization Using GitHub Actions
  A custom `Dockerfile` was added to the Spring Boot project root:
-
+### `Dockerfile`
  ```Dockerfile
  # Step 1: Use official Java 17 base image with Maven included
   
@@ -78,7 +78,6 @@ This project demonstrates a complete DevOps pipeline using:
 
   CMD ["java", "-jar", "app.jar"]
 
----
 
 
 
