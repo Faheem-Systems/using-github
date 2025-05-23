@@ -21,15 +21,24 @@ This project demonstrates a complete DevOps pipeline using:
 ### Process of initializing the application folder and pushing to GitHub:
 
   1. Navigate to the application folder in the terminal and run (Intialize git repository):
-       **git init**
-  2. Add files to staging area:
-       **git add .**
-  3. Commit the files:
-       **git commit -m "Push App1 to GitHub"**
-  4. Add GitHub remote:
-       **git remote add origin https://github.com/Faheem-Systems/using-github.git**
-  5. Push to GitHub
-       **git push -u origin main**
+
+     **git init**
+     
+  3. Add files to staging area:
+
+     **git add .**
+     
+  5. Commit the files:
+
+     **git commit -m "Push App1 to GitHub"**
+     
+  7. Add GitHub remote:
+
+     **git remote add origin https://github.com/Faheem-Systems/using-github.git**
+     
+  9. Push to GitHub
+
+     **git push -u origin main**
 
 ---
 
