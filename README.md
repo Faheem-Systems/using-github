@@ -18,7 +18,7 @@ This project demonstrates a complete DevOps pipeline using:
 - **Java Version**: 17
 - **Dependencies**: Spring Web, Spring Boot Actuator
 
-### Process of initializing the application folder and pushing to GitHub:
+### Process of initializing the application folder and pushing to GitHub (local git):
 
   1. Navigate to the application folder in the terminal and run (Intialize git repository):
 
