@@ -76,6 +76,8 @@ This project demonstrates a complete DevOps pipeline using:
 
   EXPOSE 8080
 
+ # Run the application with the generated JAR file
+
   CMD ["java", "-jar", "app.jar"]
 
 
@@ -85,3 +87,15 @@ This project demonstrates a complete DevOps pipeline using:
 
 
 
+🔁 GitHub Actions Workflow: docker.yml
+A CI workflow was created to:
+
+Checkout code
+
+Set up Java and Docker
+
+Build Spring Boot project with Maven
+
+Build Docker image
+
+Push Docker image to GHCR
