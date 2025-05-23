@@ -46,37 +46,37 @@ This project demonstrates a complete DevOps pipeline using:
  A custom `Dockerfile` was added to the Spring Boot project root:
 
  ```Dockerfile
-/* Step 1: Use official Java 17 base image with Maven included */
+ # Step 1: Use official Java 17 base image with Maven included
   
-  **FROM maven:3.9.6-eclipse-temurin-17-alpine AS build**
+  FROM maven:3.9.6-eclipse-temurin-17-alpine AS build
 
-  **WORKDIR /app**
+  WORKDIR /app
 
-/* Copy all files */
+ # Copy all files 
   
-  **COPY . .**
+  COPY . .
 
-/* Give execute permission to the Maven wrapper script */
+ # Give execute permission to the Maven wrapper script
   
-  **RUN chmod +x mvnw**
+  RUN chmod +x mvnw**
 
-/* Build the Spring Boot app */
+ # Build the Spring Boot app
    
-  **RUN ./mvnw clean package -DskipTests**
+  RUN ./mvnw clean package -DskipTests
 
-/* Step 2: Create final image with just the JAR file */
+ # Step 2: Create final image with just the JAR file
 
-  **FROM eclipse-temurin:17-jdk-alpine**
+  FROM eclipse-temurin:17-jdk-alpine
 
-  **WORKDIR /app**
+  WORKDIR /app
 
-/* Copy only the built JAR file from the previous stage */
+ # Copy only the built JAR file from the previous stage
   
-  **COPY --from=build /app/target/*.jar app.jar**
+  COPY --from=build /app/target/*.jar app.jar
 
-  **EXPOSE 8080**
+  EXPOSE 8080
 
-  **CMD ["java", "-jar", "app.jar"]**
+  CMD ["java", "-jar", "app.jar"]
 
 ---
 
