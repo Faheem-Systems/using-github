@@ -39,6 +39,7 @@ This project demonstrates a complete DevOps pipeline using:
   9. Push to GitHub
 
      **git push -u origin main**
+     
 
 ---
 
@@ -74,6 +75,8 @@ This project demonstrates a complete DevOps pipeline using:
   
   COPY --from=build /app/target/*.jar app.jar
 
+ # Expose port 8080 for application
+
   EXPOSE 8080
 
  # Run the application with the generated JAR file
@@ -81,7 +84,7 @@ This project demonstrates a complete DevOps pipeline using:
   CMD ["java", "-jar", "app.jar"]
 
 
----
+```
 
 
 
