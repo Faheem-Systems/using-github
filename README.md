@@ -86,19 +86,15 @@ This project demonstrates a complete DevOps pipeline using:
 
 ```
 
-
-
-
-
-🔁 GitHub Actions Workflow: docker.yml
+#  3. GitHub Actions Workflow: `docker.yml`
 A CI workflow was created to:
 
-Checkout code
+1.Checkout code
 
-Set up Java and Docker
+2.Set up Java and Docker
 
-Build Spring Boot project with Maven
+3.Build Spring Boot project with Maven
 
-Build Docker image
+4.Build Docker image
 
-Push Docker image to GHCR
+5.Push Docker image to GHCR
