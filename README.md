@@ -206,7 +206,7 @@ See `variables.tf` for detailed descriptions.
 
 ## Usage
 
-Set variables in `terraform.tfvars` or pass them as CLI arguments. 
+Sensitive variables such as GHCR credentials are passed via GitHub Actions Secrets using CLI `-var` flags during deployment. No terraform.tfvars file is needed.
 
 ---
 
