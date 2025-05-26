@@ -204,3 +204,7 @@ See `variables.tf` for detailed descriptions.
 
 ---
 
+## Usage
+
+Set variables in `terraform.tfvars` or pass them as CLI arguments.  
+
