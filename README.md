@@ -142,3 +142,63 @@ jobs:
           docker build -t ghcr.io/$REPO_LOWER:latest .  # Build the Docker image with the repository name in the tag
           docker push ghcr.io/$REPO_LOWER:latest  # Push the Docker image to GitHub Container Registry
 ```
+---
+
+# Terraform Deployment for Spring Boot App on Azure
+
+
+## Overview
+
+This Terraform project automates the deployment of a **Spring Boot application** on **Microsoft Azure** using:
+
+- **Azure Resource Group** to group related resources.
+- **Azure App Service Plan** to host the application as a web app.
+- **Docker container images** stored in GitHub Container Registry (GHCR).
+
+The Terraform scripts provision these Azure resources to enable smooth hosting of the app using Azure App Service.
+
+---
+
+## Key Components
+
+| Component             | Description                                  |
+|-----------------------|----------------------------------------------|
+| Resource Group        | Logical container for Azure resources         |
+| App Service Plan      | Compute resources to host the web application |
+| Docker Image          | Containerized app stored in GitHub Container Registry |
+
+---
+
+## Prerequisites
+
+- Azure subscription with appropriate permissions.
+- GitHub Personal Access Token (PAT) with `read:packages` scope for GHCR authentication.
+- Terraform CLI installed (version >= 1.0 recommended).
+- Azure CLI installed and logged in.
+
+---
+
+## How It Works
+
+1. Terraform creates an Azure resource group to organize resources.
+2. It provisions an Azure App Service Plan to provide the hosting environment.
+3. The Spring Boot app is deployed as a Docker container pulled from GitHub Container Registry using the provided credentials.
+4. Terraform manages the lifecycle of these resources.
+
+---
+
+## Variables
+
+The project uses several variables such as:
+
+- `resource_group_name`: Name of the Azure resource group.
+- `location`: Azure region (e.g., East US).
+- `docker_image_name`: Docker image URL from GHCR.
+- `docker_image_tag`: Docker image tag (e.g., latest).
+- `ghcr_username`: GitHub username for GHCR.
+- `ghcr_token`: GitHub PAT (sensitive).
+
+See `variables.tf` for detailed descriptions.
+
+---
+
