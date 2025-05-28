@@ -1,8 +1,8 @@
-#  Full DevOps CI Project: Spring Boot + Docker + GHCR + Terraform (Azure)
+#  Full DevOps Project : Spring Boot + Docker + GHCR + Terraform (Azure)
 
 This project demonstrates a complete DevOps pipeline using:
 - A Spring Boot Application
-- Dockerization using GitHub Actions
+- Dockerization using Docker and GitHub Actions
 - GitHub Container Registry (GHCR) for image hosting
 - Terraform Infrastructure Provisioning on Azure via CI/CD
 
@@ -151,7 +151,7 @@ jobs:
 
 ## Overview
 
-This Terraform project automates the deployment of a **Spring Boot application** on **Microsoft Azure** using:
+This Terraform project automates the deployment of a **Spring Boot application** on **Microsoft Azure App** using:
 
 - **Azure Resource Group** to group related resources.
 - **Azure App Service Plan** to host the application as a web app.
@@ -285,7 +285,6 @@ variable "location" {
 variable "docker_image_name" {
   description = "Docker image repository URL (GHCR)"
   type        = string
-  default     = "ghcr.io/your-github-username/your-app"
 }
 
 variable "docker_image_tag" {
