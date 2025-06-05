@@ -146,7 +146,7 @@ jobs:
 ```
 ---
 
-# Terraform Deployment for Spring Boot App on Azure
+# 4. Terraform Deployment for Spring Boot App on Azure
 
 
 ## Overview
